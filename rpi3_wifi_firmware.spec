@@ -1,5 +1,5 @@
 %define _binaries_in_noarch_packages_terminate_build 0
-%global _firmwarepath   /lib/firmware
+%global _firmwarepath   /lib/firmware/brcm
 
 Name:          rpi3-wifi-firmware
 Version:       0.0
