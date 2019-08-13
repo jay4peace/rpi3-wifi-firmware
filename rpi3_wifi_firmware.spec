@@ -4,7 +4,7 @@
 
 Name:          rpi3-wifi-firmware
 Version:       0.0
-Release:       1
+Release:       2
 Summary:       rpi3 brcm firmware for WiFi
 License:       Proprietary and GPL-2
 BuildArch:     noarch
@@ -37,6 +37,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %license LICENCE.broadcom_bcm43xx
 %license LICENCE.GPL-2
-%defattr(-, root, root, -)
+%defattr(644, root, root, -)
 %{_firmwarepath}/*
 
