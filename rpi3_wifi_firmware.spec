@@ -37,5 +37,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %license LICENCE.broadcom_bcm43xx
 %license LICENCE.GPL-2
+%defattr(-, root, root, -)
 %{_firmwarepath}/*
 
