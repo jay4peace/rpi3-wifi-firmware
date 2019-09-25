@@ -14,7 +14,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Install rpm
       run: |
-        apt install rpm
+        sudo apt update
+        sudo apt install rpm
     - name: Run packaging
       run: |
         rpmbuild --define "_sourcedir `pwd`" --bb rpi3_wifi_firmware.spec -v
