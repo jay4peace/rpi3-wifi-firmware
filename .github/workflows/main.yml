@@ -1,9 +1,11 @@
-name: CI
+name: build_on_push
 
 on:
   push:
     branches:
     - master
+    tags:
+    - '!*'    
 
 jobs:
   build:
