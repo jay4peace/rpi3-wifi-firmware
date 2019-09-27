@@ -21,4 +21,7 @@ jobs:
     - name : Upload release
       run: |
         go get -u github.com/tcnksm/ghr
-        ghr -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
+        pwd
+        ls -al ./
+        ls -al /home/runner/rpmbuild/RPMS/noarch/
+        ./ghr -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
