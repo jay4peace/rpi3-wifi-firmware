@@ -20,8 +20,8 @@ jobs:
         rpmbuild --define "_sourcedir `pwd`" --bb rpi3_wifi_firmware.spec -v
     - name : Upload release
       run: |
-        mkdir -p ~/go
-        export GOPATH="~/go"
+        mkdir -p /home/runner/go
+        export GOPATH="/home/runner/go"
         go get -u github.com/tcnksm/ghr
         pwd
         echo "gopath : $GOPATH"
