@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
     - name: Install rpm 
       run: |
         sudo apt update
@@ -22,6 +22,8 @@ jobs:
       run: |
         go get -u github.com/tcnksm/ghr
         pwd
-        ls -al ./
-        ls -al /home/runner/rpmbuild/RPMS/noarch/
-        ./ghr -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
+        echo "gopath : $GOPATH"
+        echo "goroot : $GOROOT"
+        ls -al $GOPATH/bin
+        ls -al $GOROOT/bin
+        ghr -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
