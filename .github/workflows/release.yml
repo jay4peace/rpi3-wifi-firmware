@@ -19,11 +19,11 @@ jobs:
       run: |
         rpmbuild --define "_sourcedir `pwd`" --bb rpi3_wifi_firmware.spec -v
     - name : Install ghr
-       run: |
-         export GOPATH=${HOME}/go 
-         mkdir -p ${GOPATH}
-         go get -u github.com/tcnksm/ghr
-         echo "GOPATH : ${GOPATH}"
+      run: |
+        export GOPATH=${HOME}/go 
+        mkdir -p ${GOPATH}
+        go get -u github.com/tcnksm/ghr
+        echo "GOPATH : ${GOPATH}"
     - name : Upload release
       run: |
         export GOPATH=${HOME}/go
