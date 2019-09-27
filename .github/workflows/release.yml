@@ -15,17 +15,22 @@ jobs:
       run: |
         sudo apt update
         sudo apt install rpm 
-    - name: Run packaging
+    - name: Packaging
       run: |
         rpmbuild --define "_sourcedir `pwd`" --bb rpi3_wifi_firmware.spec -v
+    - name : Install ghr
+      env:
+        GOPATH: ${{ HOME }}/go
+       run: |
+         mkdir -p ${GOPATH}
+        go get -u github.com/tcnksm/ghr
+        echo "GOPATH : ${GOPATH}"
     - name : Upload release
       env: 
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GOPATH: ${{ HOME }}/go
+        GOPATH_BIN: ${{ GOPATH }}/bin
       run: |
-        mkdir -p /home/runner/go
-        export GOPATH="/home/runner/go"
-        go get -u github.com/tcnksm/ghr
         echo "user : ${GITHUB_REPOSITORY%/*}"
         echo "repo : ${GITHUB_REPOSITORY#*/}"
         echo "tag : ${GITHUB_REF#refs/tags/}"
-        $GOPATH/bin/ghr -t "${GITHUB_TOKEN}" -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
+        $GOPATH_BIN/ghr -t "${GITHUB_TOKEN}" -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
