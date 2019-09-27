@@ -20,4 +20,4 @@ jobs:
         rpmbuild --define "_sourcedir `pwd`" --bb rpi3_wifi_firmware.spec -v
     - name : Upload release
       run: |
-        ghr -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
+        /usr/local/bin/ghr -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
