@@ -23,6 +23,7 @@ jobs:
         mkdir -p /home/runner/go
         export GOPATH="/home/runner/go"
         go get -u github.com/tcnksm/ghr
-        echo "GITHUB_REF : ${GITHUB_REF}"
-        echo "GITHUB_REF#refs/tags/: ${GITHUB_REF#refs/tags/}"
-        $GOPATH/bin/ghr -t ${GITHUB_TOKEN} -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF}" "/home/runner/rpmbuild/RPMS/noarch/"
+        echo "user : ${GITHUB_REPOSITORY%/*}"
+        echo "repo : ${GITHUB_REPOSITORY#*/}"
+        echo "tag : ${GITHUB_REF#refs/tags/}"
+        $GOPATH/bin/ghr -t ${GITHUB_TOKEN} -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
