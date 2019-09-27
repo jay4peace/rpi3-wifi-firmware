@@ -19,6 +19,8 @@ jobs:
       run: |
         rpmbuild --define "_sourcedir `pwd`" --bb rpi3_wifi_firmware.spec -v
     - name : Upload release
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         mkdir -p /home/runner/go
         export GOPATH="/home/runner/go"
