@@ -27,6 +27,7 @@ jobs:
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        export GOPATH=${HOME}/go 
         export GOPATH_BIN=${GOPATH}/bin
         echo "user : ${GITHUB_REPOSITORY%/*}"
         echo "repo : ${GITHUB_REPOSITORY#*/}"
