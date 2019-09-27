@@ -26,4 +26,4 @@ jobs:
         echo "user : ${GITHUB_REPOSITORY%/*}"
         echo "repo : ${GITHUB_REPOSITORY#*/}"
         echo "tag : ${GITHUB_REF#refs/tags/}"
-        $GOPATH/bin/ghr -t ${GITHUB_TOKEN} -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
+        $GOPATH/bin/ghr -t "${GITHUB_TOKEN}" -u "${GITHUB_REPOSITORY%/*}" -r "${GITHUB_REPOSITORY#*/}" "${GITHUB_REF#refs/tags/}" "/home/runner/rpmbuild/RPMS/noarch/"
